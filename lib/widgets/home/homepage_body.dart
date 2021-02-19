@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/widgets/days_task/days_bottom_widget.dart';
-
 import 'home_Background.dart';
 import 'home_bottom_widget.dart';
 import 'home_date_list.dart';
 
+// ignore: must_be_immutable
 class HomepageBody extends StatelessWidget {
   final BuildContext context;
+  String date;
 
-  HomepageBody({@required this.context});
+  HomepageBody({@required this.context, @required this.date});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class HomepageBody extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 1/35),
-              child: HomeBottomWidget(),
+              child: HomeBottomWidget(date: date,),
             ),
           )
         ],

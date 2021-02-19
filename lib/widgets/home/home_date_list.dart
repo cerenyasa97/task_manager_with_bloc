@@ -22,7 +22,7 @@ class DateList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: 8,
           itemBuilder: (context, index){
-            return HomeDateCards(index: index);
+            return HomeDateCards(index: index, context: context);
           },
         ),
       ),

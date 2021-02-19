@@ -13,8 +13,8 @@ class TaskRepository{
     }
   }
 
-  Future<List<Task>> getTasks(String date) async{
-    List<Task> taskList = await databaseHelper.getTaskList(date);
+  Future<List<Task>> getTasks(String date, int isDone) async{
+    List<Task> taskList = await databaseHelper.getTaskList(date, isDone);
     if(taskList == null){
       throw Exception("An error occurred while reading tasks.");
     }

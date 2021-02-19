@@ -6,10 +6,15 @@ import '../error_widget.dart';
 import '../loading.dart';
 
 class HomeBottomWidget extends StatelessWidget {
+
+  final date;
+
+  HomeBottomWidget({this.date});
+
   @override
   Widget build(BuildContext context) {
     final taskBloc = BlocProvider.of<TaskBloc>(context);
-    taskBloc.add(GetTasksEvent());
+    taskBloc.add(GetTasksEvent(date: date));
     return BlocBuilder<TaskBloc,TaskState>(
       builder: (context, state){
         if (state is GettingTaskState){

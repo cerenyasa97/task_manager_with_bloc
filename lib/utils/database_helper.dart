@@ -6,12 +6,12 @@ import 'package:path/path.dart';
 import 'package:task_manager/models/task.dart';
 import 'package:synchronized/synchronized.dart';
 
-class DatabaseHelper extends ChangeNotifier{
+class DatabaseHelper extends ChangeNotifier {
   static DatabaseHelper _databaseHelper;
   static Database _database;
 
   factory DatabaseHelper(){
-    if(_databaseHelper == null){
+    if (_databaseHelper == null) {
       _databaseHelper = DatabaseHelper._internal();
     }
     return _databaseHelper;
@@ -19,8 +19,8 @@ class DatabaseHelper extends ChangeNotifier{
 
   DatabaseHelper._internal();
 
-  Future<Database> _getDatabase() async{
-    if(_database == null){
+  Future<Database> _getDatabase() async {
+    if (_database == null) {
       _database = await _initializeDatabase();
     }
     notifyListeners();
@@ -54,15 +54,37 @@ class DatabaseHelper extends ChangeNotifier{
     return _db;
   }
 
-  Future<List<Map<String, dynamic>>> getTasks() async {
+  Future<List<Map<String, dynamic>>> getTasks(String date, int isDone) async {
     var db = await _getDatabase();
-    var result = await db.query("tasks");
+    var result;
+    if(date == null){
+        if(isDone == null){
+          result = await db.rawQuery("SELECT * FROM tasks ORDER BY startDate ASC, startTime ASC, endDate DESC, endTime ASC");
+        }
+        else if(isDone == 0){
+          result = await db.rawQuery("SELECT * FROM tasks WHERE isDone == 0 ORDER BY startDate ASC, startTime ASC, endDate DESC, endTime ASC");
+        }
+        else{
+          result = await db.rawQuery("SELECT * FROM tasks WHERE isDone == 1 ORDER BY startDate ASC, startTime ASC, endDate DESC, endTime ASC");
+        }
+      }
+      else{
+        if(isDone == null){
+          result = await db.rawQuery('SELECT * FROM tasks WHERE startDate == "' + date + '" OR (startDate <= "' + date + '" AND endDate >= "' + date + '") ORDER BY startDate ASC, startTime ASC, endDate ASC, endTime ASC');
+        }
+        else if(isDone == 0){
+          result = await db.rawQuery('SELECT * FROM tasks WHERE startDate == "' + date + '" OR (startDate <= "' + date + '" AND endDate >= "' + date + '") AND isDone == 0 ORDER BY startDate ASC, startTime ASC, endDate ASC, endTime ASC');
+        }
+        else{
+          result = await db.rawQuery('SELECT * FROM tasks WHERE startDate == "' + date + '" OR (startDate <= "' + date + '" AND endDate >= "' + date + '") AND isDone == 1 ORDER BY startDate ASC, startTime ASC, endDate ASC, endTime ASC');
+        }
+    }
     return result;
   }
 
-  Future<List<Task>> getTaskList() async{
+  Future<List<Task>> getTaskList(String date, int isDone) async {
     List<Task> taskList = List<Task>();
-    var map = await getTasks();
+    var map = await getTasks(date, isDone);
     map.forEach((task) => taskList.add(Task.fromMap(task)));
     return taskList;
   }
@@ -74,21 +96,29 @@ class DatabaseHelper extends ChangeNotifier{
   }
 
 
-  Future<int> updateTask(Task task) async{
+  Future<int> updateTask(Task task) async {
     var db = await _getDatabase();
-    var result = await db.update("tasks", task.toMap(), where: "taskId = ?", whereArgs: [task.taskID]);
+    var result = await db.update(
+        "tasks", task.toMap(), where: "taskId = ?", whereArgs: [task.taskID]);
     return result;
   }
 
-  Future<int> deleteTask(Task task) async{
+  Future<int> deleteTask(int taskID) async {
     var db = await _getDatabase();
-    var result = await db.delete("tasks", where: "taskId = ?", whereArgs: [task.taskID]);
+    var result = await db.delete(
+        "tasks", where: "taskId = ?", whereArgs: [taskID]);
     return result;
   }
 
-  Future<int> deleteTasks() async{
+  Future<int> deleteTasks() async {
     var db = await _getDatabase();
     var result = await db.delete("tasks");
     return result;
   }
+
+  Future<List<Map<String, dynamic>>> getPriorityColors() async{
+    var db = await _getDatabase();
+    var result = await db
+  }
+
 }

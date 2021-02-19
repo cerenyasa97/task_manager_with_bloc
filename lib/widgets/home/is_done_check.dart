@@ -24,9 +24,9 @@ class _IsDoneCheckState extends State<IsDoneCheck> {
           return Checkbox(
             value: (taskBloc.state as GetTaskState).taskList[widget.index].isDone == 0 ? false : true,
             onChanged: (newValue) {
-              setState(() {
-                (taskBloc.state as GetTaskState).taskList[widget.index].isDone = newValue ? 1 : 0;
-              });
+              (taskBloc.state as GetTaskState).taskList[widget.index].isDone = newValue ? 1 : 0;
+              taskBloc.add(UpdateTaskEvent(task: (taskBloc.state as GetTaskState).taskList[widget.index]));
+              taskBloc.add(GetTasksEvent());
             },
           );
         }
