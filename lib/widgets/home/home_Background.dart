@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Add an image to the background
 class HomeBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

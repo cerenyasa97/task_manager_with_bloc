@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'date_and_time.dart';
 import 'task_description.dart';
 
+// Structure of task descriptions
 class TaskInformation extends StatelessWidget {
 
   final int index;

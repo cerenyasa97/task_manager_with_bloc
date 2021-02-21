@@ -5,6 +5,7 @@ import 'is_done_check.dart';
 import 'priority.dart';
 import 'task_information.dart';
 
+// Structure of each task card
 // ignore: must_be_immutable
 class TaskCard extends StatelessWidget {
   final index;

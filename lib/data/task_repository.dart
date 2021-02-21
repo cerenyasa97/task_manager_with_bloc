@@ -11,6 +11,7 @@ class TaskRepository{
     if(result == 0){
       throw Exception("The task could not be saved to the database.");
     }
+    return result;
   }
 
   Future<List<Task>> getTasks(String date, int isDone) async{

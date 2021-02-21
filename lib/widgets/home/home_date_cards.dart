@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_manager/bloc/task_bloc.dart';
+import 'package:task_manager/bloc/task/task_bloc.dart';
 import 'package:task_manager/utils/constants.dart';
 import 'package:date_time_format/date_time_format.dart';
 
@@ -15,6 +15,7 @@ class HomeDateCards extends StatefulWidget {
   _HomeDateCardsState createState() => _HomeDateCardsState();
 }
 
+// Date cards design
 class _HomeDateCardsState extends State<HomeDateCards> {
   @override
   Widget build(BuildContext context) {

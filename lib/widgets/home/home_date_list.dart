@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_date_cards.dart';
 
-
+// Date cards that can be used as buttons for task filtering by date
 class DateList extends StatelessWidget {
 
   final BuildContext context;

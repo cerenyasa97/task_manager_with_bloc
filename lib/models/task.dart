@@ -6,6 +6,7 @@ class Task{
   String startTime;
   String endDate;
   String endTime;
+  String priorityColor;
   int priority;
   int isDone;
 
@@ -36,11 +37,12 @@ class Task{
     this.endDate = map["endDate"];
     this.endTime = map["endTime"];
     this.priority = map["priority"];
+    this.priorityColor = map["color"];
     this.isDone = map["isDone"];
   }
 
   @override
   String toString() {
-    return 'Task{taskID: $taskID, taskTitle: $taskTitle, taskDescription: $taskDescription, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, priority: $priority, isDone: $isDone}';
+    return 'Task{taskID: $taskID, taskTitle: $taskTitle, taskDescription: $taskDescription, startDate: $startDate, startTime: $startTime, endDate: $endDate, endTime: $endTime, priority: $priority, isDone: $isDone, color: $priorityColor}';
   }
 }

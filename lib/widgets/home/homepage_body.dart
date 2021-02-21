@@ -4,6 +4,7 @@ import 'home_bottom_widget.dart';
 import 'home_date_list.dart';
 
 // ignore: must_be_immutable
+// Homepage body structure
 class HomepageBody extends StatelessWidget {
   final BuildContext context;
   String date;

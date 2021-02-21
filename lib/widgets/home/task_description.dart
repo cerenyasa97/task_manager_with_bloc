@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_manager/bloc/task_bloc.dart';
+import 'package:task_manager/bloc/task/task_bloc.dart';
 
+// Details of task descriptions are shown
 class TaskDescription extends StatelessWidget {
   final int index;
 
