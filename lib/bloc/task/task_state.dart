@@ -10,6 +10,11 @@ class TaskInitial extends TaskState {
 }
 
 class TaskCreatedState extends TaskState{
+
+  final int result;
+
+  TaskCreatedState({@required this.result});
+
   @override
   // TODO: implement props
   List<Object> get props => throw UnimplementedError();
@@ -45,6 +50,10 @@ class TaskGetErrorState extends TaskState{
 }
 
 class UpdatedTaskState extends TaskState{
+  final int result;
+
+  UpdatedTaskState({@required this.result});
+
   @override
   // TODO: implement props
   List<Object> get props => throw UnimplementedError();

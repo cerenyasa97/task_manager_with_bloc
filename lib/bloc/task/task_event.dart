@@ -18,8 +18,9 @@ class CreateTaskEvent extends TaskEvent{
 class GetTasksEvent extends TaskEvent{
 
   final String date;
+  final int isDone;
 
-  GetTasksEvent({this.date});
+  GetTasksEvent({this.date, this.isDone});
 
   @override
   // TODO: implement props

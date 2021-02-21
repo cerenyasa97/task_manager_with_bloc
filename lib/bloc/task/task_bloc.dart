@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:task_manager/data/task_repository.dart';
 import 'package:task_manager/locator/service_locator.dart';
 import 'package:task_manager/models/task.dart';
@@ -16,12 +16,12 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
   @override
   Stream<TaskState> mapEventToState(
-    TaskEvent event,
-  ) async* {
+      TaskEvent event,
+      ) async* {
     if(event is CreateTaskEvent){
       try{
-        taskRepository.createWeather(event.task);
-        yield TaskCreatedState();
+        final result = taskRepository.createWeather(event.task);
+        yield TaskCreatedState(result: result);
       }catch(_){
         yield TaskCreateErrorState();
       }
@@ -30,7 +30,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     else if(event is GetTasksEvent){
       yield GettingTaskState();
       try{
-        final List<Task> taskList = await taskRepository.getTasks(event.date);
+        final List<Task> taskList = await taskRepository.getTasks(event.date, event.isDone);
         yield GetTaskState(taskList: taskList);
       }
       catch(_){
@@ -40,8 +40,8 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
 
     else if(event is UpdateTaskEvent){
       try{
-        await taskRepository.updateTask(event.task);
-        yield UpdatedTaskState();
+        final result = await taskRepository.updateTask(event.task);
+        yield UpdatedTaskState(result: result);
       }
       catch(_){
         yield UpdateTaskErrorState();
@@ -69,3 +69,4 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     }
   }
 }
+
