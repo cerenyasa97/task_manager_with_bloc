@@ -25,13 +25,13 @@ The application saves your daily, weekly and monthly tasks in a local database w
 With the page designed to add tasks, adding tasks to the application is easy and straightforward. Tasks can be scrolled to the left and reach the delete and update buttons in the menu that appears. The Update button goes to the task creation page with the recorded information of the task and the necessary places are updated here.
 
 <p align="center">
-  <img src = "https://user-images.githubusercontent.com/59059790/108704743-7dccb080-751d-11eb-8460-44675b8bdc05.png" width = "500">
+  <img src = "https://user-images.githubusercontent.com/59059790/108704743-7dccb080-751d-11eb-8460-44675b8bdc05.png" height = "500">
 </p>
 
 You can filter the tasks according to their completion status.Tasks can be scrolled to the left and reach the delete and update buttons in the menu that appears. The Update button goes to the task creation page with the recorded information of the task and the necessary places are updated here.
 
 <p align="center">
-  <img src = "https://user-images.githubusercontent.com/59059790/108703412-a3f15100-751b-11eb-9e82-6ae830ba769d.PNG" width = "500">
+  <img src = "https://user-images.githubusercontent.com/59059790/108705674-aef9b080-751e-11eb-8529-8ae9ed6daef7.PNG" height = "500">
 </p>
 
 ### Getting Started
