@@ -2,6 +2,8 @@
 
 A new Flutter application.
 
+https://play.google.com/store/apps/details?id=com.ceren.task_manager_with_xd
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
